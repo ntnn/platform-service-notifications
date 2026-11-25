@@ -33,7 +33,7 @@ jobs:
 
       - name: E2E Platform API
         run: |
-          task template:dev:e2e watch=platform
+          task test-e2e
 
   test-e2e-onboarding-api:
     name: Platform Service with Onboarding Cluster API
@@ -61,4 +61,4 @@ jobs:
 
       - name: E2E Onboarding API
         run: |
-          task template:dev:e2e watch=onboarding
+          task test-e2e
