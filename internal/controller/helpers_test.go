@@ -16,6 +16,7 @@ const (
 	roleView        = "view"
 	kindClusterRole = "ClusterRole"
 	testBaseURL     = "https://mycompany.eu"
+	testKind        = "MyKind"
 )
 
 func TestSubjectKind(t *testing.T) {
@@ -130,10 +131,10 @@ func TestParseServiceGVK(t *testing.T) {
 		wantVer    string
 		wantErr    bool
 	}{
-		{"MyKind", "mygroup.io/v1", "mygroup.io", "v1", false},
-		{"MyKind", "v1", "", "v1", false},
-		{"MyKind", "services.example.io/v1beta1", "services.example.io", "v1beta1", false},
-		{"MyKind", "", "", "", true},
+		{testKind, "mygroup.io/v1", "mygroup.io", "v1", false},
+		{testKind, "v1", "", "v1", false},
+		{testKind, "services.example.io/v1beta1", "services.example.io", "v1beta1", false},
+		{testKind, "", "", "", true},
 	}
 	for _, tc := range cases {
 		gvk, err := parseServiceGVK(tc.kind, tc.apiVersion)
